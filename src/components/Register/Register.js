@@ -4,12 +4,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import registerImg from '../../assets/register.png'
 import { toast } from 'react-toastify';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Register = () => {
     const [error, setError] = useState();
     const [isDisabled, setIsDisabled] = useState(true);
-    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext)
+    const { createUser, updateUserProfile, verifyEmail, providerGoogleLogin, providerGithubLogin } = useContext(AuthContext)
     const navigate = useNavigate()
+
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleRegister = event =>{
         event.preventDefault();
@@ -51,10 +56,33 @@ const Register = () => {
         .catch(error => setError(error.message))
 
     }
+
+     // Login With Google
+     const handleSignInWithGoogle = () => {
+        providerGoogleLogin(googleProvider)
+        .then(result => {
+            const user = result.user;
+            toast.success("Login successfully.")
+            // console.log(user);
+        })
+        .catch(error => toast.error('Error: ', error));
+    }
+
+    // Login with GitHub
+    const handleSignInWithGithub = () => {
+        providerGithubLogin(githubProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            toast.success("Login successfully.")
+        })
+        .catch(error => toast.error('Error: ', error))
+    }
+
     return (
-        <Container className='container mx-auto my-5'>
+        <Container className='container mx-auto my-2'>
             <Row>
-            <Col lg="6" className='my-5 me-4'>
+            <Col lg="6" className='container mx-auto my-5 me-4'>
                 <Image
                     rounded
                     style={{height: "100%", width: "100%"}}
@@ -62,34 +90,39 @@ const Register = () => {
                 ></Image>
             </Col>
 
-            <Col lg="5" className='bg-light border border-2 p-5 my-5 rounded shado'>
+            <Col lg="5" className='container mx-auto bg-light border border-2 px-5 py-3 my-5 rounded shado'>
                     <h3 className='text-center text-gray'>Please Register Now</h3>
                         <p className='text-danger text-bold'> {error} </p>
                     <Form onSubmit={handleRegister}>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Group className="mb-2" controlId="formBasicEmail">
                             <Form.Label>Full Name</Form.Label>
                             <Form.Control type="text" name="name" placeholder="Enter name" required />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Group className="mb-2" controlId="formBasicEmail">
                             <Form.Label>photoURL</Form.Label>
                             <Form.Control type="text" name="photoURL" placeholder="Enter photoURL" />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Group className="mb-2" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="email" name="email" placeholder="Enter email" required />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group className="mb-2" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" name="password" placeholder="Password" required />
                         </Form.Group>
-                        <Form.Group className="mb-3 d-flex align-items-center" controlId="formBasicCheckbox">
+                        <Form.Group className="mb-2 d-flex align-items-center" controlId="formBasicCheckbox">
                             <Form.Check onClick={() => setIsDisabled(!isDisabled)} className='me-2' type="checkbox" required />
                             accetp <Link to='/terms' className='ms-2'> terms & conditions</Link>
                         </Form.Group>
+                        <p>Already have an account? Please! <Link to='/login'>Login Now</Link> </p>
                         <Button disabled={isDisabled} className='w-100' variant="primary" type="submit">
                             Register
                         </Button>
+                        <div className='d-flex container w-100 mx-auto  bg-light  mb-3 mt-3 py-3 align-items-center'>
+                            <button onClick={handleSignInWithGoogle}  className='btn btn-outline-primary w-50 mx-auto me-2 fw-bold'> <FaGoogle /> Sign In</button>
+                            <button onClick={handleSignInWithGithub} className='btn btn-outline-dark w-50 mx-auto fw-bold'> <FaGithub /> Sign In</button>
+                        </div>
                     </Form>
             </Col>
             </Row>

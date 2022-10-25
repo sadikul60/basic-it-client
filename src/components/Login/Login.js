@@ -1,8 +1,8 @@
-import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import {  GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
@@ -12,7 +12,6 @@ const Login = () => {
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
-    const facebookProvider = new FacebookAuthProvider();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -56,7 +55,7 @@ const Login = () => {
             toast.success("Login successfully.")
             // console.log(user);
         })
-        .catch(error => console.error("Error", error));
+        .catch(error => toast.error('Error: ', error));
     }
 
     // Login with GitHub
@@ -67,7 +66,7 @@ const Login = () => {
             console.log(user);
             toast.success("Login successfully.")
         })
-        .catch(error => console.error("Error", error))
+        .catch(error => toast.error('Error: ', error))
     }
 
     
@@ -86,6 +85,7 @@ const Login = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" name="password" placeholder="Password" required />
                     </Form.Group>
+                    <p>New to Basic IT? Please! <Link to='/register'>Register Now</Link> </p>
                     <Button className='w-100' variant="primary" type="submit">
                         Login
                     </Button>
@@ -96,10 +96,9 @@ const Login = () => {
                 <span className='text-center h1'>OR</span>
                 <hr className='w-25 mx-auto my-3' />
             </div>
-            <div className='container w-50 mx-auto border border-2 bg-light rounded mb-5 mt-3'>
+            <div className='container w-50 mx-auto border border-2 bg-light rounded mb-5 mt-3 py-3'>
                 <button onClick={handleSignInWithGoogle} className='btn btn-outline-primary w-100 mx-auto mb-3 py-2 fw-bold'> <FaGoogle /> Sign In With Google</button>
-                <button onClick={handleSignInWithGithub} className='btn btn-outline-dark w-100 mx-auto mb-3 py-2 fw-bold'> <FaGithub /> Sign In With GitHub</button>
-                <button className='btn btn-outline-primary w-100 mx-auto mb-3 py-2 fw-bold'> <FaFacebook /> Sign In With Facebook</button>
+                <button onClick={handleSignInWithGithub} className='btn btn-outline-dark w-100 mx-auto py-2 fw-bold'> <FaGithub /> Sign In With GitHub</button>
             </div>
         </div>
     );

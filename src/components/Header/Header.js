@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, Image } from 'react-bootstrap';
+import { Button, Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -11,7 +11,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
 
-    console.log(user)
+    // console.log(user)
     // log Out from site handle event
     const handleLogOut = () => {
         logOut()
@@ -59,11 +59,10 @@ const Header = () => {
                             <Link to="/profile">
                                 {
                                     user?.photoURL  ?
-                                    <Image
+                                        <Image
                                         roundedCircle
                                         style={{height: "35px", width: "35px"}}
                                         src={user?.photoURL}
-                                        
                                     ></Image>
                                     : 
                                     <FaUser className='w-4'></FaUser>

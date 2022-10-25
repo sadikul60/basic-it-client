@@ -8,7 +8,7 @@ const auth = getAuth(app)
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    console.log(user)
+    // console.log(user)
 
     // GoogleProvider 
     const providerGoogleLogin = (provider) => {
@@ -22,11 +22,6 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth, provider);
     }
 
-    // FacebookProvider
-    const providerFacebookLogin = (provider) => {
-        setLoading(true);
-        return signInWithPopup(auth, provider);
-    }
 
     // Create User
     const createUser = (email, password) => {
@@ -78,7 +73,6 @@ const AuthProvider = ({children}) => {
         createUser, 
         signIn, 
         providerGithubLogin, 
-        providerFacebookLogin,
         updateUserProfile,
         verifyEmail,
         logOut 

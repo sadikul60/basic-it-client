@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../../components/Blog/Blog";
-import Courses from "../../components/Courses/Courses";
+import Courses from "../../components/Courses/Courses"; 
 import ErrorPage from "../../components/ErrorPage/ErrorPage";
 import FAQ from "../../components/FAQ/FAQ";
 import Login from "../../components/Login/Login";
@@ -14,7 +14,8 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: '/courses',
-                element: <Courses></Courses>
+                element: <Courses></Courses>,
+                loader: () => fetch('https://basic-it-server.vercel.app/courses')
             },
             {
                 path: '/faq',
