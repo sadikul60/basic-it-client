@@ -36,7 +36,7 @@ const Login = () => {
             
             if(user.emailVerified){
                 navigate(from, {replace: true});
-                toast.success("login successfully.");
+                toast.success("Login successfully.");
             }
             else{
                 toast.warn('Your email is not verified. Please verify your email address');
@@ -53,7 +53,8 @@ const Login = () => {
         providerGoogleLogin(googleProvider)
         .then(result => {
             const user = result.user;
-            console.log(user);
+            toast.success("Login successfully.")
+            // console.log(user);
         })
         .catch(error => console.error("Error", error));
     }
@@ -64,9 +65,12 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            toast.success("Login successfully.")
         })
         .catch(error => console.error("Error", error))
     }
+
+    
     return (
         <div>
             <div className='w-50 mx-auto border bg-light border-2 p-3 mt-5 mb-3 rounded'>
