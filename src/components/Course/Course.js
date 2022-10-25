@@ -17,15 +17,12 @@ const Course = ({course}) => {
                     <Card.Text>
                     {
                     details.length > 70 ?
-                    <>{details.slice(0, 70) + '...'} <Link to={`/news/${_id}`}>Read More</Link></>
+                    <>{details.slice(0, 70) + '...'} <Link to={`/courses/${_id}`}>Read More</Link></>
                     :
                     <>{details}</>
                 }
                     </Card.Text>
                     </Card.Body>
-                    <Card.Footer>
-                    <small className="text-muted">Last updated 3 mins ago</small>
-                    </Card.Footer>
                 </Card>
                 </Col>
     );

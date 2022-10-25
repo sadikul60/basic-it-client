@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import Categories from '../Categories/Categories';
 import Course from '../Course/Course';
 
 
@@ -13,7 +14,7 @@ const Courses = () => {
         <Container>
             <Row>
                 <Col lg="4">
-            
+                    <Categories></Categories>
                 </Col>
                 <Col lg="8">
                       <Row>

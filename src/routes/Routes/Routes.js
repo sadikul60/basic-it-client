@@ -5,7 +5,11 @@ import ErrorPage from "../../components/ErrorPage/ErrorPage";
 import FAQ from "../../components/FAQ/FAQ";
 import Login from "../../components/Login/Login";
 import Register from "../../components/Register/Register";
+import CourseDetails from "../../components/CourseDetails/CourseDetails";
+import Course from "../../components/Course/Course";
+
 import Main from '../../layout/Main/Main'
+
 
 export const routes = createBrowserRouter([
     {
@@ -17,6 +21,17 @@ export const routes = createBrowserRouter([
                 element: <Courses></Courses>,
                 loader: () => fetch('https://basic-it-server.vercel.app/courses')
             },
+            {
+                path: '/courses/:id',
+                element: <CourseDetails></CourseDetails>,
+                loader: ({params}) => fetch(`https://basic-it-server.vercel.app/courses/${params.id}`)
+            },
+            {
+                path: '/category/:id',
+                element: <Course></Course>,
+                loader: ({params}) => fetch(`https://basic-it-server.vercel.app/category/${params.id}`)
+            },
+
             {
                 path: '/faq',
                 element: <FAQ></FAQ>
@@ -32,6 +47,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/details',
+                element: <CourseDetails></CourseDetails>
             }
         ]
     },

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -7,6 +7,7 @@ import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import image from '../../assets/logo2.png'
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -31,43 +32,45 @@ const Header = () => {
                             data-bs-placement="bottom" 
                             data-bs-title={user?.displayName}
                         ></Image>
-                        Basic IT
+                        <span className='h2'>Basic IT</span>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto my-2 my-lg-0">
-                        <Nav className='me-3 '><Link to='/courses'>Courses</Link></Nav>
-                        <Nav className='me-3'><Link to='/blog'>Blog</Link></Nav>
-                        <Nav className='me-3'><Link to='/faq'>FAQ</Link></Nav>
+                    <Nav className="me-auto my-2 my-lg-0 ">
+                        <Nav className='me-3 '><Link className='text-decoration-none h5 text-white' to='/courses'>Courses</Link></Nav>
+                        <Nav className='me-3'><Link className='text-decoration-none h5 text-white' to='/blog'>Blog</Link></Nav>
+                        <Nav className='me-3'><Link className='text-decoration-none h5 text-white' to='/faq'>FAQ</Link></Nav>
                         
                     </Nav>
                     <Nav>
-                    <div>
-                            {
-                                user?.uid ?
-                                <>
-                                    <Button onClick={handleLogOut} variant='outline-light' className='mx-3'>Log Out</Button>
-                                </>
-                                :
-                                <>
-                                    <Link className='me-3' to="/login">Login</Link>
-                                    <Link  className='me-3' to="/register">Register</Link>
-                                </>
-                            }
-                        </div>
-                        <div>
-                            <Link to="/profile">
+                        <div className='d-flex'>
+                            <div>
                                 {
-                                    user?.photoURL  ?
-                                        <Image
-                                        roundedCircle
-                                        style={{height: "35px", width: "35px"}}
-                                        src={user?.photoURL}
-                                    ></Image>
-                                    : 
-                                    <FaUser className='w-4'></FaUser>
+                                    user?.uid ?
+                                    <>
+                                        <Button onClick={handleLogOut} variant='outline-light' className='me-3'>Log Out</Button>
+                                    </>
+                                    :
+                                    <div className='d-block'>
+                                        <Link className='me-3 text-decoration-none h5 text-white' to="/login">Login</Link>
+                                        <Link  className='me-3 text-decoration-none h5 text-white' to="/register">Register</Link>
+                                    </div>
                                 }
-                            </Link>
+                            </div>
+                            <div>
+                                <Link to="/profile">
+                                    {
+                                        user?.photoURL  ?
+                                            <Image
+                                            roundedCircle
+                                            style={{height: "35px", width: "35px"}}
+                                            src={user?.photoURL}
+                                        ></Image>
+                                        : 
+                                        <FaUser className='w-4'></FaUser>
+                                    }
+                                </Link>
+                            </div>
                         </div>
                     </Nav>
                     </Navbar.Collapse>
