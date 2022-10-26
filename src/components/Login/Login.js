@@ -33,9 +33,9 @@ const Login = () => {
             const user = result.user;
             form.reset()
             setError('');
+            navigate(from, {replace: true});
             
             if(user.emailVerified){
-                navigate(from, {replace: true});
                 toast.success("Login successfully.");
             }
             else{
@@ -52,8 +52,8 @@ const Login = () => {
         providerGoogleLogin(googleProvider)
         .then(result => {
             const user = result.user;
+            navigate(from, {replace: true});
             if(user.emailVerified){
-                navigate(from, {replace: true});
                 toast.success("Login successfully.");
             }
             else{
@@ -69,8 +69,9 @@ const Login = () => {
         providerGithubLogin(githubProvider)
         .then(result => {
             const user = result.user;
+            navigate(from, {replace: true});
+            
             if(user.uid){
-                navigate(from, {replace: true});
                 toast.success("Login successfully.");
             }
             else{

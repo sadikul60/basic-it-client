@@ -41,11 +41,6 @@ export const routes = createBrowserRouter([
                 element: <Category></Category>,
                 loader: ({params}) => fetch(`https://basic-it-server.vercel.app/category/${params.id}`)
             },
-            // {
-            //     path: '/category',
-            //     element: <Category></Category>
-            // },
-
             {
                 path: '/faq',
                 element: <FAQ></FAQ>
