@@ -2,14 +2,14 @@ import React from 'react';
 import { Card, Col, Container, Image, Row } from 'react-bootstrap';
 import {  Link, useLoaderData  } from 'react-router-dom';
 import Categories from '../Categories/Categories';
-import Course from '../Course/Course';
+
 
 
 
 const Category = () => {
     const categoryAll = useLoaderData();
     const {_id, image_url, title, details} = categoryAll;
-    console.log(categoryAll)
+   
 
 
     return (

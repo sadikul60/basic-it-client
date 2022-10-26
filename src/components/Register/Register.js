@@ -76,7 +76,7 @@ const Register = () => {
             console.log(user);
             toast.success("Login successfully.")
         })
-        .catch(error => toast.error('Error: ', error))
+        .catch(error => console.error("Error", error))
     }
 
     return (
