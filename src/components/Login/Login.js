@@ -52,7 +52,7 @@ const Login = () => {
         providerGoogleLogin(googleProvider)
         .then(result => {
             const user = result.user;
-            toast.success("Login successfully.")
+            toast.success("Login successfully.");
             // console.log(user);
         })
         .catch(error => toast.error('Error: ', error));

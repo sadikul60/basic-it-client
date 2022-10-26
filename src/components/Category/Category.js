@@ -1,13 +1,44 @@
 import React from 'react';
-import { Link  } from 'react-router-dom';
+import { Card, Col, Container, Image, Row } from 'react-bootstrap';
+import {  Link, useLoaderData  } from 'react-router-dom';
+import Categories from '../Categories/Categories';
+import Course from '../Course/Course';
 
-const Category = ({category, _id}) => {
-    
+
+
+const Category = () => {
+    const categoryAll = useLoaderData();
+    const {_id, image_url, title, details} = categoryAll;
+    console.log(categoryAll)
+
 
     return (
-        <div className='w-100 mx-auto px-5'>
-            <Link to={`/courses/${_id}`}><button className='w-100 mx-auto my-2 btn btn-outline-dark fw-bold'>{category?.name}</button></Link>
-        </div>
+        <Container>
+            <Row>
+                <Col lg="4">
+                    <Categories></Categories>
+                </Col>
+                <Col lg="8" className='mt-4'>
+                    <Card className='bg-dark'>
+                        <Image 
+                            src={image_url} 
+                            style={{ height: "230px", padding: "5px", borderRadius: "5px"}}  
+                            />
+                        <Card.Body  className='text-white'>
+                        <Card.Title>{title}</Card.Title>
+                        <Card.Text>
+                        {
+                            details.length > 150 ?
+                            <>{details.slice(0, 150) + '...'} <Link to={`/courses/${_id}`}>Read More</Link></>
+                            :
+                            <>{details}</>
+                        }
+                        </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

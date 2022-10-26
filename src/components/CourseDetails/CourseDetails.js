@@ -13,7 +13,7 @@ const CourseDetails = () => {
         <Container className='my-5'>
             <Row>
                 <Col lg="4">
-                    <Categories id ={_id}></Categories>
+                    <Categories></Categories>
                 </Col>
                 <Col lg="8">
                     <Card className='bg-dark'>

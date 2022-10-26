@@ -7,7 +7,7 @@ const Course = ({course}) => {
     // console.log(course)
     return (
         <Col lg="4" className='mt-4'>
-                    <Card className='bg-dark'>
+                <Card className='bg-dark'>
                     <Image 
                         src={image_url} 
                         style={{ height: "230px", padding: "5px", borderRadius: "5px"}}  
@@ -16,15 +16,15 @@ const Course = ({course}) => {
                     <Card.Title>{title}</Card.Title>
                     <Card.Text>
                     {
-                    details.length > 70 ?
-                    <>{details.slice(0, 70) + '...'} <Link to={`/courses/${_id}`}>Read More</Link></>
-                    :
-                    <>{details}</>
-                }
+                        details.length > 70 ?
+                        <>{details.slice(0, 70) + '...'} <Link to={`/courses/${_id}`}>Read More</Link></>
+                        :
+                        <>{details}</>
+                    }
                     </Card.Text>
                     </Card.Body>
                 </Card>
-                </Col>
+        </Col>
     );
 };
 

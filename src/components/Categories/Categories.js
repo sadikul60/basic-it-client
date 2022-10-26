@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Category from '../Category/Category';
+import { Link } from 'react-router-dom';
 
-const Categories = ({_id}) => {
+
+const Categories = () => {
     const [categories, setCategories] = useState([]);
+    console.log(categories, "hejwerj");
     
     useEffect( () => {
         fetch('https://basic-it-server.vercel.app/categories')
@@ -12,11 +14,14 @@ const Categories = ({_id}) => {
     return (
         <div className='my-5 border border-2 py-3 rounded bg-info'>
             {
-                categories.map(category => <Category 
-                    key={category.id}
-                    category = {category}
-                    _id = {_id}
-                ></Category>)
+                categories.map(category => <p 
+                    key={category.id}>
+                        <Link to={`/category/${category.id}`}>
+                        <button  className='w-100 mx-auto my-2 btn btn-outline-dark fw-bold'>
+                            {category.name}
+                        </button>
+                        </Link>
+                    </p>)
             }
         </div>
     );

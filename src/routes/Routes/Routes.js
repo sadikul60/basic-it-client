@@ -6,9 +6,13 @@ import FAQ from "../../components/FAQ/FAQ";
 import Login from "../../components/Login/Login";
 import Register from "../../components/Register/Register";
 import CourseDetails from "../../components/CourseDetails/CourseDetails";
-import Course from "../../components/Course/Course";
+
 
 import Main from '../../layout/Main/Main'
+import Category from "../../components/Category/Category";
+import Profile from "../../components/Profile/Profile/Profile";
+import UpdateProfile from "../../components/Profile/UpdateProfile/UpdateProfile";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 export const routes = createBrowserRouter([
@@ -23,14 +27,18 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses/:id',
-                element: <CourseDetails></CourseDetails>,
+                element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>,
                 loader: ({params}) => fetch(`https://basic-it-server.vercel.app/courses/${params.id}`)
             },
             {
                 path: '/category/:id',
-                element: <Course></Course>,
+                element: <Category></Category>,
                 loader: ({params}) => fetch(`https://basic-it-server.vercel.app/category/${params.id}`)
             },
+            // {
+            //     path: '/category',
+            //     element: <Category></Category>
+            // },
 
             {
                 path: '/faq',
@@ -50,7 +58,15 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/details',
-                element: <CourseDetails></CourseDetails>
+                element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>
+            },
+            {
+                path: '/profile',
+                element: <PrivateRoute><Profile></Profile></PrivateRoute>
+            },
+            {
+                path: '/update_profile',
+                element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
             }
         ]
     },

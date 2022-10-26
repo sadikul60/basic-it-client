@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -11,6 +11,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [open, setOpen] = useState(false)
 
     // console.log(user)
     // log Out from site handle event
@@ -43,6 +44,14 @@ const Header = () => {
                         
                     </Nav>
                     <Nav>
+                        <div className='mb-3' onClick={() => setOpen(!open)}>
+                            {
+                                open ? <Button className='me-3' variant='outline-light' >Light Mood</Button> 
+                                : 
+                                <Button className='me-3' variant='outline-light' >Dark Mood</Button>
+                            }
+                            
+                        </div>
                         <div className='d-flex'>
                             <div>
                                 {
