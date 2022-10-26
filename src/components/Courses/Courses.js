@@ -11,7 +11,7 @@ const Courses = () => {
     const courses = useLoaderData();
     // console.log(courses)
     return (
-        <Container>
+        <Container className='my-5'>
             <Row>
                 <Col lg="4">
                     <Categories></Categories>
