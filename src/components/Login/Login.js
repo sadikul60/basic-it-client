@@ -52,8 +52,13 @@ const Login = () => {
         providerGoogleLogin(googleProvider)
         .then(result => {
             const user = result.user;
-            toast.success("Login successfully.");
-            // console.log(user);
+            if(user.emailVerified){
+                navigate(from, {replace: true});
+                toast.success("Login successfully.");
+            }
+            else{
+                toast.warn('Your email is not verified. Please verify your email address');
+            }
         })
         .catch(error => toast.error('Error: ', error));
     }

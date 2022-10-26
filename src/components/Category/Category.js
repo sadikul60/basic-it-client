@@ -18,11 +18,11 @@ const Category = () => {
                 <Col lg="4">
                     <Categories></Categories>
                 </Col>
-                <Col lg="8" className='mt-4'>
+                <Col lg="7" className='mt-4'>
                     <Card className='bg-dark'>
                         <Image 
                             src={image_url} 
-                            style={{ height: "230px", padding: "5px", borderRadius: "5px"}}  
+                            style={{ height: "330px", padding: "5px", borderRadius: "5px"}}  
                             />
                         <Card.Body  className='text-white'>
                         <Card.Title>{title}</Card.Title>
