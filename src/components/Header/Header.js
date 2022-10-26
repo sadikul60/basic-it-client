@@ -7,6 +7,7 @@ import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import image from '../../assets/logo2.png'
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import ReactTooltip from 'react-tooltip';
 
 
 const Header = () => {
@@ -44,7 +45,9 @@ const Header = () => {
                         
                     </Nav>
                     <Nav>
-                        <div className='mb-3' onClick={() => setOpen(!open)}>
+                        
+                        <div className='d-flex'>
+                        <div className='' onClick={() => setOpen(!open)}>
                             {
                                 open ? <Button className='me-3' variant='outline-light' >Light Mood</Button> 
                                 : 
@@ -52,7 +55,6 @@ const Header = () => {
                             }
                             
                         </div>
-                        <div className='d-flex'>
                             <div>
                                 {
                                     user?.uid ?
@@ -67,7 +69,9 @@ const Header = () => {
                                 }
                             </div>
                             <div>
-                                <Link to="/profile">
+                                
+                                <ReactTooltip className='bg-primary fw-bold'></ReactTooltip>
+                                <Link data-tip={user?.displayName} to="/profile"> 
                                     {
                                         user?.photoURL  ?
                                             <Image
@@ -79,6 +83,7 @@ const Header = () => {
                                         <FaUser className='w-4'></FaUser>
                                     }
                                 </Link>
+                                
                             </div>
                         </div>
                     </Nav>

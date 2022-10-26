@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Col, Container, Image, Row } from 'react-bootstrap';
 import {  Link, useLoaderData  } from 'react-router-dom';
 import Categories from '../Categories/Categories';
+import ReactTooltip from 'react-tooltip';
 
 
 
