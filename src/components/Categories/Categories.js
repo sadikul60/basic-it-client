@@ -12,7 +12,7 @@ const Categories = () => {
         .then(data => setCategories(data))
     } ,[])
     return (
-        <div className='my-5 border border-2 py-3 rounded bg-info'>
+        <div className='my-5 border border-2 py-3 rounded bg-info shadow-lg'>
             {
                 categories.map(category => <p 
                     key={category.id}>

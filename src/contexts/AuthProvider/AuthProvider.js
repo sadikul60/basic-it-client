@@ -8,7 +8,7 @@ const auth = getAuth(app)
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    // console.log(user)
+
 
     // GoogleProvider 
     const providerGoogleLogin = (provider) => {
@@ -37,7 +37,7 @@ const AuthProvider = ({children}) => {
     
     // UpdateProfile
     const updateUserProfile = (profile) => {
-        setLoading(false)
+        // setLoading(false)
         return updateProfile(auth.currentUser, profile);
     }
 
@@ -54,9 +54,7 @@ const AuthProvider = ({children}) => {
 
     useEffect( () => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            if(currentUser === null || currentUser.emailVerified){
                 setUser(currentUser);
-            }
         });
         return () => {
             unsubscribe()

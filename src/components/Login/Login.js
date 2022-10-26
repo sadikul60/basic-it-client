@@ -8,7 +8,8 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState();
-    const {signIn, providerGoogleLogin, providerGithubLogin, setLoading} = useContext(AuthContext);
+
+    const { signIn, providerGoogleLogin, providerGithubLogin } = useContext(AuthContext);
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -40,10 +41,9 @@ const Login = () => {
             else{
                 toast.warn('Your email is not verified. Please verify your email address');
             }
-            console.log(user);
         })
         .catch(error => setError(error.message))
-        .finally( () => setLoading(false))
+        
     }
 
 
@@ -59,6 +59,7 @@ const Login = () => {
             else{
                 toast.warn('Your email is not verified. Please verify your email address');
             }
+            
         })
         .catch(error => toast.error('Error: ', error));
     }
@@ -68,10 +69,16 @@ const Login = () => {
         providerGithubLogin(githubProvider)
         .then(result => {
             const user = result.user;
-            console.log(user);
-            toast.success("Login successfully.")
+            if(user.uid){
+                navigate(from, {replace: true});
+                toast.success("Login successfully.");
+            }
+            else{
+                toast.warn('Your email is not verified. Please verify your email address');
+            }
         })
-        .catch(error => toast.error('Error: ', error))
+        .catch(error => console.error('Error: ', error.message))
+        
     }
 
     

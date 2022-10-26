@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 
 const Course = ({course}) => {
     const {_id, image_url, title, rating} = course;
-    console.log(course)
+
     return (
         <Col lg="4" className='mt-4'>
-                <Card className='bg-dark'>
+                <Card className='bg-dark shadow-lg'>
                     <Image 
                         src={image_url} 
                         style={{ height: "230px", padding: "5px", borderRadius: "5px"}}  

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import registerImg from '../../assets/register.png'
 import { toast } from 'react-toastify';
@@ -11,7 +11,10 @@ const Register = () => {
     const [error, setError] = useState();
     const [isDisabled, setIsDisabled] = useState(true);
     const { createUser, updateUserProfile, verifyEmail, providerGoogleLogin, providerGithubLogin } = useContext(AuthContext)
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -62,10 +65,15 @@ const Register = () => {
         providerGoogleLogin(googleProvider)
         .then(result => {
             const user = result.user;
-            toast.success("Login successfully.")
-            // console.log(user);
+            if(user.emailVerified){
+                navigate(from, {replace: true});
+                toast.success("Login successfully.");
+            }
+            else{
+                toast.warn('Your email is not verified. Please verify your email address');
+            }
         })
-        .catch(error => toast.error('Error: ', error));
+        .catch(error => toast.error('Error: ', error.message));
     }
 
     // Login with GitHub
@@ -74,7 +82,13 @@ const Register = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
-            toast.success("Login successfully.")
+            if(user.uid){
+                navigate(from, {replace: true});
+                toast.success("Login successfully.");
+            }
+            else{
+                toast.warn('Your email is not verified. Please verify your email address');
+            }
         })
         .catch(error => console.error("Error", error))
     }

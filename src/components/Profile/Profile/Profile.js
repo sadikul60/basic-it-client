@@ -15,7 +15,6 @@ const Profile = () => {
             ></Image>
             <h3 className='text-uppercase pt-2'>{user?.displayName}</h3>
             <p className='p-0'>{user?.email}</p>
-            <p>Email verified: YES</p>
             <p>ID: {user?.metadata?.createdAt}</p>
             <Link to='/update_profile'><button className='btn btn-info mb-5 mt-3'>Update Profile</button></Link> 
         </div>

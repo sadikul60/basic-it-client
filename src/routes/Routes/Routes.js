@@ -13,6 +13,7 @@ import Category from "../../components/Category/Category";
 import Profile from "../../components/Profile/Profile/Profile";
 import UpdateProfile from "../../components/Profile/UpdateProfile/UpdateProfile";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Checkout from "../../components/Checkout/Checkout";
 
 
 export const routes = createBrowserRouter([
@@ -32,7 +33,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses/:id',
-                element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>,
+                element: <CourseDetails></CourseDetails>,
                 loader: ({params}) => fetch(`https://basic-it-server.vercel.app/courses/${params.id}`)
             },
             {
@@ -63,7 +64,11 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/details',
-                element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>
+                element: <CourseDetails></CourseDetails>
+            },
+            {
+                path: '/checkout',
+                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
             },
             {
                 path: '/profile',

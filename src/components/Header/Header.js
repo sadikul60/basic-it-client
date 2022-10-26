@@ -68,8 +68,7 @@ const Header = () => {
                                     </div>
                                 }
                             </div>
-                            <div>
-                                
+                            <div> 
                                 <ReactTooltip className='bg-primary fw-bold'></ReactTooltip>
                                 <Link data-tip={user?.displayName} to="/profile"> 
                                     {
