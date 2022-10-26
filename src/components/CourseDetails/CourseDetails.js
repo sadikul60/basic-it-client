@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Col, Container, Image, Row } from 'react-bootstrap';
-import { FaStar } from 'react-icons/fa';
+import { FaDownload, FaStar } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 import Categories from '../Categories/Categories';
 
@@ -17,12 +17,15 @@ const CourseDetails = () => {
                 </Col>
                 <Col lg="7">
                     <Card className='bg-dark'>
+                        <div className='d-flex justify-content-between align-items-center text-white px-3 py-2'>
+                            <h5>{title} </h5>
+                            <p className='h3'><FaDownload></FaDownload></p>
+                        </div>
                         <Image 
                             src={image_url} 
                             style={{ height: "330px", padding: "5px", borderRadius: "5px"}}  
                             />
                         <Card.Body  className='text-white'>
-                        <Card.Title>{title}</Card.Title>
                         <div className='d-flex justify-content-between mt-4'>
                             <p>
                                 <FaStar className='text-warning'></FaStar>
