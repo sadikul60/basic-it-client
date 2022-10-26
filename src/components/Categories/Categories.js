@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const Categories = () => {
     const [categories, setCategories] = useState([]);
-    console.log(categories, "hejwerj");
     
     useEffect( () => {
         fetch('https://basic-it-server.vercel.app/categories')

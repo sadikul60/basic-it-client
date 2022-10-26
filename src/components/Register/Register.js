@@ -19,6 +19,7 @@ const Register = () => {
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
 
+    // handle Register
     const handleRegister = event =>{
         event.preventDefault();
         const form = event.target;
@@ -37,11 +38,11 @@ const Register = () => {
             handleUpdateUserProfile(name, photoURL);
             handleEmailVerification();
             toast.warn('Please verify your email address.');
-            console.log(user);
         })
         .cathe( error => setError(error.message));
     }
 
+    // handle update user profile
     const handleUpdateUserProfile = (name, photoURL) =>{
         const profile = {
             displayName: name,
@@ -49,10 +50,13 @@ const Register = () => {
         }
 
         updateUserProfile(profile)
-        .then( () => { })
+        .then( () => { 
+            toast.success('Your Profile is Updated.')
+        })
         .catch(error => setError(error.message))
     }
 
+    // handle user email varification
     const handleEmailVerification = () =>{
         verifyEmail()
         .then( () => { })

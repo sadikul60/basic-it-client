@@ -70,7 +70,9 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             navigate(from, {replace: true});
-            
+            if(!user){
+                toast.error('Please Register now.')
+            }
             if(user.uid){
                 toast.success("Login successfully.");
             }
