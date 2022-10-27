@@ -10,7 +10,7 @@ const ref = React.createRef();
 
 const Category = () => {
     const categoryAll = useLoaderData();
-    const { image_url, title, details, rating, total_view} = categoryAll;
+    const {_id, image_url, title, details, rating, total_view} = categoryAll;
 
     return (
         
@@ -52,7 +52,7 @@ const Category = () => {
                             </Card.Body>
                         </div>
                         
-                            <Link className='mb-3 mt-5 mx-3 shadow-lg ' to="/checkout"><button className='btn btn-outline-primary fw-bold w-100 mx-auto'>Get Primium Access</button></Link>
+                            <Link className='mb-3 mt-5 mx-3 shadow-lg ' to={`/category/checkout/${_id}`}><button className='btn btn-outline-primary fw-bold w-100 mx-auto'>Get Primium Access</button></Link>
                        
                     </Card>
                 </Col>

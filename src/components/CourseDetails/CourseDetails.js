@@ -12,9 +12,9 @@ const ref = React.createRef();
 
 const CourseDetails = () => {
     const courses = useLoaderData();
-    const { image_url, title, details, rating, total_view} = courses;
+    const { _id, image_url, title, details, rating, total_view} = courses;
  
-    // console.log(category._id)
+    console.log(_id)
     return (
         <Container className='my-5'>
             <Row>
@@ -51,7 +51,7 @@ const CourseDetails = () => {
                             </Card.Body>
                         </div>
                         
-                        <Link className='mb-3 mt-5 shadow-lg' to='/checkout'><button className='btn btn-outline-primary fw-bold w-100 mx-auto'>Get Primium Access</button></Link>
+                        <Link to={`/courses/checkout/${_id}`} className='mb-3 mt-5 shadow-lg' ><button className='btn btn-outline-primary fw-bold w-100 mx-auto'>Get Primium Access</button></Link>
                         
                     </Card>
                 </Col>
