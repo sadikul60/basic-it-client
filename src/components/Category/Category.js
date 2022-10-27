@@ -21,7 +21,7 @@ const Category = () => {
                 </Col>
                 <Col lg="7" className='mt-4'>
                     <Card className='bg-light'>
-                        <div className='d-flex justify-content-between align-items-center px-3 py-2'>
+                        <div className='d-flex justify-content-between fw-bold align-items-center px-3 py-2'>
                             <h5>Download This page in pdf file </h5>
                             <Pdf targetRef={ref} filename="Download.pdf">
                                 {({ toPdf }) => <button onClick={toPdf}><FaDownload></FaDownload></button>}

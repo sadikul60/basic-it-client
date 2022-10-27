@@ -23,7 +23,7 @@ const CourseDetails = () => {
                 </Col>
                 <Col lg="7">
                     <Card className='bg-light shadow-sm p-3  rounded'>
-                    <div className='d-flex justify-content-between align-items-center text-white px-3 py-2'>
+                    <div className='d-flex justify-content-between align-items-center fw-bold px-3 py-2'>
                             <h5>{title} </h5>
                             <Pdf targetRef={ref} filename="download.pdf">
                                 {({ toPdf }) => <button onClick={toPdf}><FaDownload></FaDownload></button>}
@@ -51,7 +51,7 @@ const CourseDetails = () => {
                             </Card.Body>
                         </div>
                         
-                        <Link className='mb-3 mt-5 shadow-lg' to='/checkout'><button className='btn btn-outline-primary w-100 mx-auto'>Get Primium Access</button></Link>
+                        <Link className='mb-3 mt-5 shadow-lg' to='/checkout'><button className='btn btn-outline-primary fw-bold w-100 mx-auto'>Get Primium Access</button></Link>
                         
                     </Card>
                 </Col>

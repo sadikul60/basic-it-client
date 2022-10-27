@@ -12,7 +12,7 @@ const Checkout = () => {
     }
    
     return (
-        <div className='w-50 mx-auto my-5'>
+        <div className='w-75 w-lg-50 mx-auto my-5'>
             <h3 className='fw-bold mt-5 shadow-sm p-2 text-center'><span className='text-info'>Welcome</span>, {user?.displayName}</h3>
 
             <div className='w-100 mx-auto border bg-light border-2 p-3 mt-5 mb-3 rounded'>
@@ -31,6 +31,7 @@ const Checkout = () => {
                         <Form.Control type="text" name="" id="" placeholder='Type Your Name.' />
                     </div>
                     <div className='mb-5'>
+                        <p className='p-0 m-0'>Select Course</p>
                         <select name="option" id="" required>
                             <option value="">MS Office</option>
                             <option value="">Graphics Design</option>
@@ -40,7 +41,7 @@ const Checkout = () => {
                             <option value="">Mobile Development</option>
                         </select>
                     </div>
-                    <Button onClick={handleSubmit} className='w-100' variant="primary">
+                    <Button onClick={handleSubmit} className='w-100 fw-bold' variant="primary">
                         Submit
                     </Button>
                 </Form>

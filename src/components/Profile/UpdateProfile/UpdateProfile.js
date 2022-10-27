@@ -50,7 +50,7 @@ const UpdateProfile = () => {
                     <Form.Control ref={photURLRef} defaultValue={user.photoURL} type="text" name="photoURL" placeholder="Enter photoURL" />
                 </Form.Group>
 
-                <Button className='w-100' variant="primary" type="submit">
+                <Button className='w-100 fw-bold' variant="primary" type="submit">
                     Update
                 </Button>
             </Form>

@@ -38,6 +38,9 @@ const Register = () => {
             handleUpdateUserProfile(name, photoURL);
             handleEmailVerification();
             toast.warn('Please verify your email address.');
+            if(user.emailVerified){
+                toast.success("Register Successfully.");
+            }
         })
         .cathe( error => setError(error.message));
     }
