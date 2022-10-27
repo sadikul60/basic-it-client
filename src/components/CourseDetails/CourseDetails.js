@@ -51,7 +51,7 @@ const CourseDetails = () => {
                             </Card.Body>
                         </div>
                         
-                        <Link to={`/courses/checkout/${_id}`} className='mb-3 mt-5 shadow-lg' ><button className='btn btn-outline-primary fw-bold w-100 mx-auto'>Get Primium Access</button></Link>
+                        <Link to={`/checkout/${_id}`} className='mb-3 mt-5 shadow-lg' ><button className='btn btn-outline-primary fw-bold w-100 mx-auto'>Get Primium Access</button></Link>
                         
                     </Card>
                 </Col>
