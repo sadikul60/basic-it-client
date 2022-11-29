@@ -4,9 +4,7 @@ Learning Platform
 # Live Site Link: https://basic-it-client.web.app/
 
 
-## Server Site Code Link:
-## https://github.com/sadikul60/basic-it-server
-
+## Server Site Code Link: https://github.com/sadikul60/basic-it-server
 
 ## I named my site "Basic IT". It belongs to Information Technology. Various learning features have been added to it. So that we can give maximum benifits to those who are interested in Information Technology.
 
