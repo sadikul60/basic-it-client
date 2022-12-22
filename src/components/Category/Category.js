@@ -51,9 +51,7 @@ const Category = () => {
                             </Card.Text>
                             </Card.Body>
                         </div>
-                        
                             <Link className='mb-3 mt-5 mx-3 shadow-lg ' to={`/checkout/${_id}`}><button className='btn btn-outline-primary fw-bold w-100 mx-auto'>Get Primium Access</button></Link>
-                       
                     </Card>
                 </Col>
             </Row>
