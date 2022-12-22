@@ -16,7 +16,7 @@ const Categories = () => {
                 categories.map(category => <p 
                     key={category.id}>
                         <Link to={`/category/${category.id}`}>
-                        <button  className='w-100 mx-auto my-2 btn btn-outline-dark fw-bold'>
+                        <button  className='w-100 mx-auto my-2 p-3 btn btn-dark fw-bold'>
                             {category.name}
                         </button>
                         </Link>
